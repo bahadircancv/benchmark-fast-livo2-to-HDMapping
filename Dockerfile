@@ -33,6 +33,11 @@ WORKDIR /opt
 
 RUN git clone https://github.com/strasdat/Sophus.git && \
     cd Sophus && \
+    git checkout a621ff && \
+    sed -i \
+      -e 's/unit_complex_\.real() = 1\.;/unit_complex_.real(1.);/' \
+      -e 's/unit_complex_\.imag() = 0\.;/unit_complex_.imag(0.);/' \
+      sophus/so2.cpp && \
     mkdir build && \
     cd build && \
     cmake .. -DCMAKE_CXX_STANDARD=17 && \
