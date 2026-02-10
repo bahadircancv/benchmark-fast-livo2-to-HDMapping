@@ -1,0 +1,6 @@
+[submodule "src/fast-livo2-to-hdmapping/src/3rdparty/LASzip"]
+	path = src/fast-livo2-to-hdmapping/src/3rdparty/LASzip
+	url = https://github.com/LASzip/LASzip.git
+[submodule "src/FAST-LIVO2"]
+	path = src/FAST-LIVO2
+	url = https://github.com/bahadircancv/FAST-LIVO2.git
