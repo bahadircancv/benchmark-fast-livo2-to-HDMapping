@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpcl-dev \
     nlohmann-json3-dev \
     libusb-1.0-0-dev \
-    libopencv-dev libsophus-dev \
+    libopencv-dev \
+    libfmt-dev \
     tmux \
     && rm -rf /var/lib/apt/lists/*
 
@@ -29,6 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
+
+RUN git clone https://github.com/strasdat/Sophus.git && \
+    cd Sophus && \
+    mkdir build && \
+    cd build && \
+    cmake .. -DCMAKE_CXX_STANDARD=17 && \
+    make -j$(nproc) && \
+    make install
 
 RUN git clone https://github.com/Livox-SDK/Livox-SDK.git && \
     cd Livox-SDK && \
